@@ -3,7 +3,9 @@
 <h1><%=@yarn.name %></h1>
 <p><%=@yarn.fiber %></p>
 <p><%=@yarn.color %></p>
-<p>$ <%=@yarn.price %></p>
+<p>Price: $ <%=@yarn.price.dollars %></p>
+<p>Tax: $ <%=@yarn.tax %></p>
+<p>Total: $ <%=@yarn.total %></p>
 <p><img src="<%= @yarn.image %>"</img></p>
 
 <p><%= link_to "Return to Main Page", "/products" %></p>
