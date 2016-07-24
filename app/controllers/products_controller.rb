@@ -12,30 +12,40 @@ class ProductsController < ApplicationController
     render "new.html.erb"
   end
 
-  def add_yarn_post
-    Yarn.create(
+  def create
+    @yarn = Yarn.new(
       name: params[:name],
       fiber: params[:fiber],
       price: params[:price],
       color: params[:color],
       image: params[:image]
     )
-    render "add_yarn.html.erb"
+    @yarn.save
+    render "create.html.erb"
   end
 
-  def stroll
+  def edit
+    @yarn = Yarn.find_by(id: params[:id])
+    render "edit.html.erb"
   end
 
-  def hawthorne
+  def update
+    @yarn = Yarn.find_by(id: params[:id])
+    @yarn.update(
+      name: params[:name],
+      fiber: params[:fiber],
+      price: params[:price],
+      color: params[:color],
+      image: params[:image]
+    )
+    render "update.html.erb"
   end
 
-  def stripey
+  def destroy
+    yarn = Yarn.find_by(id: params[:id])
+    yarn.destroy
+    render "destroy.html.erb"
   end
 
-  def comfy
-  end
-
-  def gloss
-  end
 
 end

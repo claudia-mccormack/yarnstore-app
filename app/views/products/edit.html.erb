@@ -1,0 +1,20 @@
+<h1>Edit Yarn</h1>
+
+<%= form_tag("/products/#{@yarn.id}", method: :patch) do %>
+<p>  <%= label_tag(:name, "Name:") %>
+  <%= text_field_tag(:name, @yarn.name) %></p>
+
+<p>  <%= label_tag(:fiber, "Fiber:") %>
+  <%= text_field_tag(:fiber, @yarn.fiber) %></p>
+
+  <p><%= label_tag(:color, "Color:") %>
+  <%= text_field_tag(:color, @yarn.color) %></p>
+
+  <p><%= label_tag(:price, "Price:") %>
+  <%= text_field_tag(:price, @yarn.price) %></p>
+
+  <p><%= label_tag(:image, "Image URL:") %>
+  <%= text_field_tag(:image, @yarn.image) %></p>
+
+  <div><%= submit_tag("Edit Yarn") %></div>
+<% end %>

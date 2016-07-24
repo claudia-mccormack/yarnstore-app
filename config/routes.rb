@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   get '/products' => 'products#index'
   get '/products/new' => 'products#new'
+  post '/products' => 'products#create'
   get '/products/:id' => 'products#show'
-  
-  post '/add_yarn' => 'products#add_yarn_post'
+  get '/products/:id/edit' => 'products#edit'
+  patch '/products/:id' => 'products#update'
+  delete '/products/:id' => 'products#destroy'
 end

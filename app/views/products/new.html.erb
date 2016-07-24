@@ -1,9 +1,9 @@
 <h1>Add Yarn</h1>
-<%= form_tag("/add_yarn", method: "post") do %>
-<p>  <%= label_tag(:name, "Name:") %>
+<%= form_tag("/products", method: "post") do %>
+<p> <%= label_tag(:name, "Name:") %>
   <%= text_field_tag(:name) %></p>
 
-<p>  <%= label_tag(:fiber, "Fiber:") %>
+<p> <%= label_tag(:fiber, "Fiber:") %>
   <%= text_field_tag(:fiber) %></p>
 
   <p><%= label_tag(:color, "Color:") %>
@@ -12,7 +12,7 @@
   <p><%= label_tag(:price, "Price:") %>
   <%= text_field_tag(:price) %></p>
 
-  <p><%= label_tag(:image, "Image:") %>
+  <p><%= label_tag(:image, "Image URL:") %>
   <%= text_field_tag(:image) %></p>
 
   <div><%= submit_tag("Add Yarn") %></div>
