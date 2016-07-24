@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
       image: params[:image]
     )
     @yarn.save
-    render "create.html.erb"
+    redirect_to "/products/#{@yarn.id}"
   end
 
   def edit
@@ -38,13 +38,13 @@ class ProductsController < ApplicationController
       color: params[:color],
       image: params[:image]
     )
-    render "update.html.erb"
+  redirect_to "/products/#{@yarn.id}"
   end
 
   def destroy
     yarn = Yarn.find_by(id: params[:id])
     yarn.destroy
-    render "destroy.html.erb"
+    redirect_to "/products"
   end
 
 
