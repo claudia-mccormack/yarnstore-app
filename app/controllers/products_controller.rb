@@ -44,9 +44,9 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    yarn = Yarn.find_by(id: params[:id])
-    yarn.destroy
-    flash[:success] = "#{@yarn.name} deleted successfully!"
+    @yarn = Yarn.find_by(id: params[:id])
+    @yarn.destroy
+    flash[:warning] = "#{@yarn.name} deleted successfully!"
     redirect_to "/products"
   end
 
