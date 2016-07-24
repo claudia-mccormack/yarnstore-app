@@ -21,6 +21,7 @@ class ProductsController < ApplicationController
       image: params[:image]
     )
     @yarn.save
+    flash[:success] = "#{@yarn.name} added successfully!"
     redirect_to "/products/#{@yarn.id}"
   end
 
@@ -38,12 +39,14 @@ class ProductsController < ApplicationController
       color: params[:color],
       image: params[:image]
     )
+  flash[:success] = "#{@yarn.name} updated successfully!"
   redirect_to "/products/#{@yarn.id}"
   end
 
   def destroy
     yarn = Yarn.find_by(id: params[:id])
     yarn.destroy
+    flash[:success] = "#{@yarn.name} deleted successfully!"
     redirect_to "/products"
   end
 
