@@ -1,12 +1,14 @@
+<h1><%= @yarn.name %></h1>
+<p><%= @yarn.fiber %></p>
+<p><%= @yarn.color %></p>
+<p>By: <%= @yarn.supplier.name %></p>
+<p>Price: $<%= @yarn.price %></p>
+<p>Tax: $<%= @yarn.tax %></p>
+<p>Total: $<%= @yarn.total %></p>
 
-
-<h1><%=@yarn.name %></h1>
-<p><%=@yarn.fiber %></p>
-<p><%=@yarn.color %></p>
-<p>Price: $ <%=@yarn.price %></p>
-<p>Tax: $ <%=@yarn.tax %></p>
-<p>Total: $ <%=@yarn.total %></p>
-<p><img src="<%= @yarn.image %>"</img></p>
+<% @yarn.images.each do |image| %>
+<p><img src="<%= image.image_url %>"</img></p>
+<% end %>
 
 <p><%= link_to "Return to Main Page", "/products" %></p>
 <p><%= link_to "Edit Product", "/products/#{@yarn.id}/edit" %></p>

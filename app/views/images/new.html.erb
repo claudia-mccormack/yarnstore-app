@@ -1,0 +1,7 @@
+<h1>Add Image</h1>
+<%= form_tag("/images", method: 'post') do %>
+<%= label_tag(:image_url) %>
+<%= text_field_tag(:image_url) %>
+<%= collection_select :yarn, :product_id, Yarn.all, :id, :name %>
+<%= submit_tag("Add Image") %>
+<% end %>

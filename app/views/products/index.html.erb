@@ -5,8 +5,8 @@
 <a href="/products/<%= yarn.id %>">
   <div class="col-md-4 well">
     <p><h3><%= yarn.name %></h3></p>
-    <p><img src="<%= yarn.image %>"></p>
-    <p><h4><%= yarn.sale_message %></h4></p>
+    <p><img src="<%= yarn.images.first.image_url %>"></p>
+    <p><h4>$<%= yarn.price %> - <%= yarn.sale_message %></h4></p>
   </div>
 </a>
 <% end %>

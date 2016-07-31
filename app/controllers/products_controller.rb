@@ -1,11 +1,25 @@
 class ProductsController < ApplicationController
   def index
     @all_products = Yarn.all
+    if params[:sort]
+      @all_products = Yarn.order(params[:sort])
+    end
+    if params[:sort_desc]
+      @all_products = Yarn.order(params[sort: :desc])
+    end
+    if params[:sort_discount]
+      @all_products = Yarn.where("price <= ?", 10)
+    end
     render "index.html.erb"
   end
 
   def show
-    @yarn = Yarn.find_by(id: params[:id])
+    if params[:id] == "random"
+      @yarn = Yarn.all.sample
+    else
+      @yarn = Yarn.find_by(id: params[:id])
+    end
+      render "show.html.erb"
   end
 
   def new
@@ -50,5 +64,9 @@ class ProductsController < ApplicationController
     redirect_to "/products"
   end
 
+  def search
+    @yarns = Yarn.where("LOWER(name) LIKE ?", "%#{params[:search].downcase}%")
+    render "index.html.erb"
+  end
 
 end
