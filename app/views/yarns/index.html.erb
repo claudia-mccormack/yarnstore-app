@@ -1,8 +1,8 @@
-<h1>All Products</h1>
+<h1>Our Yarns</h1>
 
 <div class="row products-index">
 <% @all_products.each do |yarn| %>
-<a href="/products/<%= yarn.id %>">
+<a href="/yarns/<%= yarn.id %>">
   <div class="col-md-4 well">
     <p><h3><%= yarn.name %></h3></p>
     <p><img src="<%= yarn.images.first.image_url %>"></p>

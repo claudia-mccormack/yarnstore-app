@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  get '/products' => 'products#index'
-  get '/products/new' => 'products#new'
-  post '/products' => 'products#create'
-  get '/products/:id' => 'products#show'
-  get '/products/:id/edit' => 'products#edit'
-  patch '/products/:id' => 'products#update'
-  delete '/products/:id' => 'products#destroy'
-  get '/search' => 'products#search'
+  get '/yarns' => 'yarns#index'
+  get '/yarns/new' => 'yarns#new'
+  post '/yarns' => 'yarns#create'
+  get '/yarns/:id' => 'yarns#show'
+  get '/yarns/:id/edit' => 'yarns#edit'
+  patch '/yarns/:id' => 'yarns#update'
+  delete '/yarns/:id' => 'yarns#destroy'
+  get '/search' => 'yarns#search'
 
   get '/suppliers' => 'suppliers#index'
   get '/suppliers' => 'suppliers#new'
@@ -21,4 +21,10 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
+
+  post '/orders' => 'orders#create'
+  get '/orders/:id' => 'orders#show'
+
+  post '/carted_yarns' => 'carted_yarns#create'
+  get '/carted_yarns' => 'carted_yarns#index'
 end

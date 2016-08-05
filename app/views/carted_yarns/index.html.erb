@@ -1,0 +1,15 @@
+<h1>Shopping Cart</h1>
+
+<h3>Items in Your Cart</h3>
+
+<% @carted.each do |cart| %>
+<p>Name: <%= cart.yarn.name %></p>
+<p>Product ID: <%= cart.yarn_id %></p>
+<p>Quantity: <%= cart.quantity %></p>
+<% end %>
+
+
+<%= form_tag("/orders", method: :post) do %>
+  <div><%= submit_tag("Buy Now!") %></div>
+  
+<% end %>

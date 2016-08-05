@@ -1,0 +1,29 @@
+<h1><%= @yarn.name %></h1>
+<p>Fiber: <%= @yarn.fiber %></p>
+<p>Color: <%= @yarn.color %></p>
+<p>By: <%= @yarn.supplier.name %></p>
+<p>Price: $<%= @yarn.price %></p>
+<!-- <p>Tax: $<%= @yarn.tax %></p>
+<p>Total: $<%= @yarn.total %></p> -->
+<p><% @yarn.categories.each do |category| %></p>
+  <%= category.name %>
+<% end %>
+
+<% @yarn.images.each do |image| %>
+<p><img src="<%= image.image_url %>"</img></p>
+<% end %>
+
+<h3>Buy now!</h3>
+<%= form_tag("/carted_yarns", method: :post) do %>
+
+<p><%= label_tag(:yarn_id, "Product ID:") %>
+  <%= hidden_field_tag(:yarn_id, @yarn.id) %></p>
+
+<p>  <%= label_tag(:quantity, "Quantity:") %>
+  <%= text_field_tag(:quantity) %></p>
+  <div><%= submit_tag("Add to Cart") %></div>
+
+<p><%= link_to "Return to Main Page", "/products" %></p>
+<p><%= link_to "Edit Product", "/products/#{@yarn.id}/edit" %></p>
+<p><%= link_to "Delete", "/products/#{@yarn.id}", method: :delete%></p>
+<% end %>
