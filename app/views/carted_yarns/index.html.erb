@@ -6,10 +6,11 @@
 <p>Name: <%= cart.yarn.name %></p>
 <p>Product ID: <%= cart.yarn_id %></p>
 <p>Quantity: <%= cart.quantity %></p>
+<%= link_to "Delete", "/carted_yarns/#{cart.id}", method: :patch %>
 <% end %>
 
 
 <%= form_tag("/orders", method: :post) do %>
   <div><%= submit_tag("Buy Now!") %></div>
-  
+
 <% end %>

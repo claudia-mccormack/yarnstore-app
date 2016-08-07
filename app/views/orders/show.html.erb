@@ -4,5 +4,12 @@
  <h4>Order ID: <%= @order.id %></h4>
 <h4>Email: <%= current_user.email %></h4>
 
+<h2>Order Summary:</h2>
+<% @purchased = CartedYarn.where(user_id: current_user.id, status: "purchased", order_id: @order.id) %>
+<% @purchased.each do |yarn| %>
+<p>Name: <%= yarn.yarn.name %></p>
+<p>Quantity: <%= yarn.quantity %></p>
+<% end %>
+
 <p><h1>Happy knitting!</h1></p>
 <img src="http://static1.squarespace.com/static/5029c6dce4b05bc1fa6254eb/t/503fe47a24ac77ed6e74b00f/1346364538743/1345752894237-VRCZLWUB9LPJ6VFMI693-500w.jpeg" alt="">

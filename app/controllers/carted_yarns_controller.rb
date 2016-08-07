@@ -6,7 +6,7 @@ class CartedYarnsController < ApplicationController
     yarn_id: params[:yarn_id],
     quantity: params[:quantity],
     status: "carted",
-    order_id: params[:order_id]
+
     )
     @carted.save
     redirect_to "/carted_yarns"
@@ -14,7 +14,19 @@ class CartedYarnsController < ApplicationController
 
   def index
     @carted = CartedYarn.where(user_id: current_user.id, status: "carted")
-    render "index.html.erb"
+    if @carted.count == 0
+      redirect_to "/yarns"
+      flash[:info] = "Looks like your cart is empty - check out some of our sock yarns!"
+    else
+      render "index.html.erb"
+    end
+  end
+
+  def destroy
+    removed = CartedYarn.find_by(id: params[:id])
+    removed.update(status: "removed")
+    flash[:success] = "#{removed.yarn.name} removed successfully."
+    redirect_to "/carted_yarns"
   end
 
 end

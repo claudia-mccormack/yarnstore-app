@@ -5,15 +5,30 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @selected = CartedYarn.where(user_id: current_user.id, status: "carted")
+    # alternate route:
+    # subtotal = 0
+    # carted_products.each do |cared_product|
+    #   subtotal += carted_product.product.proce * carted_product*quantity
+    # end
+    # tax = subtotal * 0.09
+    # total = subtotal + tax
     @order = Order.new(
     user_id: current_user.id,
-    # subtotal: @yarn.price * params[:quantity].to_i,
-    # tax: (@yarn.price * params[:quantity].to_i) * 0.09,
-    # total: (@yarn.price * params[:quantity].to_i) + (@yarn.price * 0.09)
+    # subtotal: subtotal,
+    # tax: tax,
+    # total: total
     )
-    @order.save
-  
+    @selected = CartedYarn.where(user_id: current_user.id, status: "carted")
+      selected_subtotal = @selected.map{|yarn| yarn.yarn.price.to_i * yarn.quantity}.inject(:+)
+      @order.subtotal = selected_subtotal
+      @order.tax = selected_subtotal * 0.09
+      @order.total = selected_subtotal + @order.tax
+      @order.save
+    @selected.each do |update_status|
+      update_status.update(order_id: @order.id, status: "purchased")
+      # or call update_all on a selection from CartedYarn
+    end
+
     flash[:success] = "Order successful!"
     redirect_to "/orders/#{@order.id}"
   end

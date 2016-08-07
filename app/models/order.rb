@@ -1,6 +1,7 @@
 class Order < ActiveRecord::Base
   belongs_to :user
   belongs_to :yarn
+  has_many :carted_yarns
   has_many :yarns, through: :carted_yarns
 
   # def order_subtotal

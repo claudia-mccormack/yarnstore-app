@@ -27,4 +27,5 @@ Rails.application.routes.draw do
 
   post '/carted_yarns' => 'carted_yarns#create'
   get '/carted_yarns' => 'carted_yarns#index'
+  patch '/carted_yarns/:id' => 'carted_yarns#destroy'
 end

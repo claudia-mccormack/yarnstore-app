@@ -17,7 +17,7 @@ class YarnsController < ApplicationController
       category = Category.find_by(name: params[:category])
       @all_products = category.yarns
     end
-    
+
     render "index.html.erb"
   end
 
@@ -73,7 +73,7 @@ class YarnsController < ApplicationController
   end
 
   def search
-    @yarns = Yarn.where("LOWER(name) LIKE ?", "%#{params[:search].downcase}%")
+    @all_products = Yarn.where("name LIKE ?", "%#{params[:search].downcase}%")
     render "index.html.erb"
   end
 
